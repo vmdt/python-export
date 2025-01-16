@@ -3,9 +3,8 @@ import imutils
 import numpy as np
 
 class StichingImage:
-    def __init__(self, images):
-        self.images = images
-        self.read_image()
+    def __init__(self):
+        self.images = []
         self.stitcher = cv2.Stitcher_create()
     
     def stich_images(self):
@@ -25,5 +24,5 @@ class StichingImage:
         else:
             return None
         
-    def read_image(self):
-        self.images = [cv2.imdecode(np.frombuffer(image, np.uint8), cv2.IMREAD_COLOR) for image in self.images]
+    def read_image(self, images):
+        self.images = [cv2.imdecode(np.frombuffer(image, np.uint8), cv2.IMREAD_COLOR) for image in images]
