@@ -4,3 +4,8 @@ xhtml2pdf==0.2.8
 docxtpl==0.16.3
 Werkzeug==2.2.2
 python-dotenv
+opencv-python==4.10.0.84
+numpy==2.2.1
+imutils==0.5.4
+reportlab==4.0.9
+cloudinary==1.26.0
