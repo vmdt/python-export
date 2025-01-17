@@ -1,0 +1,122 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Tour Header */
+.tour-header {
+    background: #64ccc5;
+    /* color: #fff; */
+    padding: 20px;
+    /* text-align: center; */
+}
+
+.tour-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.rating {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.rating .fas {
+    color: #ffd700; /* Màu vàng cho sao */
+    margin-right: 5px;
+}
+
+/* Tour Schedule */
+.tour-schedule {
+    padding: 20px;
+}
+
+.tour-schedule h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #007bff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #64ccc5;
+    font-weight: bold;
+    text-align: center;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.thank-you {
+    margin-top: 20px;
+    font-size: 16px;
+    font-style: italic;
+    color: #555;
+    text-align: center;
+}
+
+.footer {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    border-top: 1px solid #ddd;
+}
+
+.footer h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #222;
+}
+
+.footer p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.footer strong {
+    color: #000;
+}
+
+.txt-center {
+    text-align: center;
+}
