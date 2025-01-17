@@ -1,6 +1,8 @@
 import cv2
 import imutils
 import numpy as np
+from src.utils import upload
+from io import BytesIO
 
 class StichingImage:
     def __init__(self):
@@ -20,7 +22,10 @@ class StichingImage:
             x, y, w, h = cv2.boundingRect(areaOI)
 
             self.stitched_image = stitched_image[y:y+h, x:x+w]
-            return self.stitched_image
+            _, buffer = cv2.imencode('.jpg', self.stitched_image)
+            stitched_image_bytes = BytesIO(buffer.tobytes())
+
+            return stitched_image_bytes
         else:
             return None
         
