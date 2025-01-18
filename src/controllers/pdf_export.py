@@ -5,6 +5,24 @@ from endesive import pdf
 import os
 import tempfile
 from src import app
+import json
+from io import BytesIO
+
+@app.route("/pdf/itinerary", methods=["POST"])
+def render_itinerary():
+    params = request.form
+    tour = json.loads(params['tour'])
+    itinerary = tour.get("itinerary", [])
+    html = render_template("itinerary/itinerary_tour.html", tour=tour, itinerary=itinerary)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(
+        BytesIO(html.encode("UTF-8")), result, context={"pageSize": 1}
+    )
+
+    if not pdf.err:
+        return sign_to_file(result.getvalue())
+    return None
+
 
 def sign_to_file(pdf_render):
     fd, path = tempfile.mkstemp()

@@ -11,3 +11,6 @@ stitching_service = stitching_image.StichingImage()
 image_process_controller = image_process.ImageProcessController(stitching_service)
 
 image_process_controller.register_routes(app)
+
+# Import the pdf_export controller
+from src.controllers import pdf_export
