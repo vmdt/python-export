@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tour itinerary information</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <style>
+      /* Reset CSS */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      /* Container */
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      /* Tour Header */
+      .tour-header {
+        /* color: #fff; */
+        /* padding: 20px; */
+        padding: 10px;
+        /* text-align: center; */
+      }
+
+      .tour-name {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .rating {
+        font-size: 18px;
+        margin-top: 10px;
+      }
+
+      .rating .fas {
+        color: #ffd700; /* Màu vàng cho sao */
+        margin-right: 5px;
+      }
+
+      /* Tour Schedule */
+      .tour-schedule {
+        padding: 20px;
+      }
+
+      .tour-schedule h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 20px;
+        color: #007bff;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto;
+      }
+
+      table th,
+      table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+
+      table th {
+        background-color: #64ccc5;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      table tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      table tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      .thank-you {
+        margin-top: 20px;
+        font-size: 16px;
+        font-style: italic;
+        color: #555;
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #f4f4f4;
+        padding: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #333;
+        border-top: 1px solid #ddd;
+      }
+
+      .footer h4 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #222;
+      }
+
+      .footer p {
+        margin: 5px 0;
+        line-height: 1.6;
+      }
+
+      .footer strong {
+        color: #000;
+      }
+
+      .txt-center {
+        text-align: center;
+      }
+
+      .fas {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="tour-header">
+        <h1 class="tour-name txt-center">Tour itinerary information</h1>
+        <h2>{{ tour['title'] }}</h2>
+        <div class="rating">
+          {% set rating_average = tour.ratingAverage if tour.ratingAverage else
+          0 %} {% for i in range(rating_average|int) %} ★ {% endfor %} {% if
+          rating_average % 1 != 0 %} ☆ {% endif %}
+          <h4>({{ tour['ratingAverage'] }}/5)</h4>
+        </div>
+      </header>
+      <section class="tour-schedule">
+        <table>
+          <thead>
+            <tr>
+              <th>Activity</th>
+              <th>Time</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in itinerary %}
+            <tr>
+              <td>{{ item['activity'] }}</td>
+              <td>
+                {{ item['timeline'] if item['timeline'] else item['duration'] }}
+              </td>
+              <td>{{ item['description'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <p class="thank-you txt-center">
+          Thank you for choosing our tour! We hope you have a memorable and
+          wonderful experience.
+        </p>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <p><strong>Email:</strong> travelife.booking@gmail.com</p>
+          <p><strong>Phone:</strong> +84 788 519 527</p>
+          <p>
+            <strong>Address:</strong> 01, Street Vo Van Ngan, Ho Chi Minh City,
+            Vietnam
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
