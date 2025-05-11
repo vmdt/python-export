@@ -37,7 +37,7 @@ class ImageProcessController:
             if stitched_image is not None:
                 upload_result = upload.upload_image(stitched_image, folder=folder, public_id=public_id)
                 if upload_result is not None:
-                    return jsonify({'url': upload_result['url']})
+                    return jsonify({'url': upload_result['secure_url']})
             return jsonify({'error': 'Stitching ERROR'}), 500
             
         app.register_blueprint(image_blueprint)
