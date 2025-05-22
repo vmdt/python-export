@@ -9,3 +9,4 @@ numpy
 imutils==0.5.4
 reportlab==4.0.9
 cloudinary==1.33.0
+gunicorn==20.1.0

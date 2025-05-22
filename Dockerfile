@@ -9,11 +9,7 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     libgl1-mesa-glx \
     && rm -rf /var/lib/apt/lists/*
-# RUN apt-get -y install --reinstall build-essential
-# RUN apt-get -y install swig
-# RUN apt-get -y install gcc
 
-User root
 WORKDIR /app
 
 RUN pip3 install --upgrade pip
@@ -22,7 +18,8 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
+ENV FLASK_ENV=production
+
 EXPOSE 5000
 
-# Run app on port default 5000
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "src:app"]
