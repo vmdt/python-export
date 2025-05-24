@@ -22,4 +22,4 @@ ENV FLASK_ENV=production
 
 EXPOSE 5000
 
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "src:app"]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
