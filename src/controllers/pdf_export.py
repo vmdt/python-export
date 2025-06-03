@@ -15,8 +15,17 @@ def render_itinerary():
     itinerary = tour.get("itinerary", [])
     html = render_template("itinerary/itinerary_tour.html", tour=tour, itinerary=itinerary)
     result = BytesIO()
+    
+    # Configure pisa with default font that supports Vietnamese
     pdf = pisa.pisaDocument(
-        BytesIO(html.encode("UTF-8")), result, context={"pageSize": 1}
+        BytesIO(html.encode("UTF-8")), 
+        result,
+        encoding='UTF-8',
+        link_callback=None,
+        context={
+            "pageSize": 1,
+            "fontName": "Arial"
+        }
     )
 
     if not pdf.err:
